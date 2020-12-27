@@ -6,6 +6,7 @@ import {
   ApolloProvider,
 } from "react-apollo";
 import "semantic-ui-css/semantic.min.css";
+
 import Routes from "./routes";
 import registerServiceWorker from "./registerServiceWorker";
 
@@ -19,6 +20,7 @@ networkInterface.use([
       if (!req.options.headers) {
         req.options.headers = {};
       }
+
       req.options.headers["x-token"] = localStorage.getItem("token");
       req.options.headers["x-refresh-token"] = localStorage.getItem(
         "refreshToken"
@@ -37,9 +39,11 @@ networkInterface.useAfter([
       if (token) {
         localStorage.setItem("token", token);
       }
+
       if (refreshToken) {
         localStorage.setItem("refreshToken", refreshToken);
       }
+
       next();
     },
   },
