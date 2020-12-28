@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 
 import React from "react";
@@ -8,9 +9,9 @@ import SendMessage from "../components/SendMessage";
 import AppLayout from "../components/AppLayout";
 import Sidebar from "../containers/Sidebar";
 
-export default () => (
+const ViewTeam = ({ match: { params } }) => (
   <AppLayout>
-    <Sidebar currentTeamId={8} />
+    <Sidebar currentTeamId={params.teamId} />
     <Header channelName="general" />
     <Messages>
       <ul className="message-list">
@@ -21,3 +22,5 @@ export default () => (
     <SendMessage channelName="general" />
   </AppLayout>
 );
+
+export default ViewTeam;
