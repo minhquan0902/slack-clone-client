@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 
@@ -8,14 +10,11 @@ const ChannelWrapper = styled.div`
   color: #958993;
 `;
 
-const channel = ({ id, name }) => {
-  <li key={`channel-${id}`}># {name}</li>;
-};
-const user = ({ id, name }) => {
-  <li key={`user-${id}`}>{name}</li>;
-};
+const channel = ({ id, name }) => <li key={`channel-${id}`}># {name}</li>;
 
-export default ({ teamName, username, channels, users }) => {
+const user = ({ id, name }) => <li key={`user-${id}`}>{name}</li>;
+
+export default ({ teamName, username, channels, users }) => (
   <ChannelWrapper>
     <div>
       {teamName}
@@ -33,5 +32,5 @@ export default ({ teamName, username, channels, users }) => {
         {users.map(user)}
       </ul>
     </div>
-  </ChannelWrapper>;
-};
+  </ChannelWrapper>
+);

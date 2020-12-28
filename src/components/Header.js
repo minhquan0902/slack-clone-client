@@ -1,14 +1,16 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import React from "react";
-import style from "styled-components";
+import styled from "styled-components";
 import { Header } from "semantic-ui-react";
 
-const HeaderWrapper = style.div`
-    grid-column: 3;
-    grid-row: 1;
+const HeaderWrapper = styled.div`
+  grid-column: 3;
+  grid-row: 1;
 `;
 
-export default ({ channelName }) => {
+export default ({ channelName }) => (
   <HeaderWrapper>
-    <Header textAlign="center"># {channelName}</Header>
-  </HeaderWrapper>;
-};
+    <Header textAlign="center">#{channelName}</Header>
+  </HeaderWrapper>
+);
