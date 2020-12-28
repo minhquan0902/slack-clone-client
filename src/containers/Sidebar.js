@@ -1,5 +1,6 @@
 import React from "react";
-import { gql, graphql } from "react-apollo";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 import _ from "lodash";
 import decode from "jwt-decode";
 
@@ -12,6 +13,7 @@ const Sidebar = ({ data: { loading, allTeams }, currentTeamId }) => {
   }
 
   const teamIdx = _.findIndex(allTeams, ["id", currentTeamId]);
+  console.log(allTeams);
   const team = allTeams[teamIdx];
   let username = "";
   try {

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { graphql, gql } from "react-apollo";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 import {
   Form,
   Container,
