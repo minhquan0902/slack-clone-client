@@ -1,29 +1,37 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-
 import decode from "jwt-decode";
 
 import Channels from "../components/Channels";
 import Teams from "../components/Teams";
 import AddChannelModal from "../components/AddChannelModal";
+import InvitePeopleModal from "../components/InvitePeopleModal";
 
 export default class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      openAddChannelModal: false,
-    };
-    this.handleCloseAddChannelModal = () => {
-      this.setState({ openAddChannelModal: false });
-    };
+  state = {
+    openAddChannelModal: false,
+    openInvitePeopleModal: false,
+  };
 
-    this.handleAddChannelClick = () => {
-      this.setState({ openAddChannelModal: true });
-    };
-  }
+  handleCloseAddChannelModal = () => {
+    this.setState({ openAddChannelModal: false });
+  };
+
+  handleAddChannelClick = () => {
+    this.setState({ openAddChannelModal: true });
+  };
+
+  handleInvitePeopleClick = () => {
+    this.setState({ openInvitePeopleModal: true });
+  };
+
+  handleCloseInvitePeopleModal = () => {
+    this.setState({ openInvitePeopleModal: false });
+  };
 
   render() {
     const { teams, team } = this.props;
+    const { openInvitePeopleModal, openAddChannelModal } = this.state;
 
     let username = "";
     try {
@@ -48,12 +56,19 @@ export default class Sidebar extends React.Component {
           { id: 2, name: "user1" },
         ]}
         onAddChannelClick={this.handleAddChannelClick}
+        onInvitePeopleClick={this.handleInvitePeopleClick}
       />,
       <AddChannelModal
         teamId={team.id}
         onClose={this.handleCloseAddChannelModal}
-        open={this.state.openAddChannelModal}
+        open={openAddChannelModal}
         key="sidebar-add-channel-modal"
+      />,
+      <InvitePeopleModal
+        teamId={team.id}
+        onClose={this.handleCloseInvitePeopleModal}
+        open={openInvitePeopleModal}
+        key="invite-people-modal"
       />,
     ];
   }
