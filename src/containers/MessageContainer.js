@@ -12,7 +12,7 @@ const MessageContainer = ({ data: { loading, messages } }) =>
         {messages.map((m) => (
           <Comment key={`${m.id}-message`}>
             <Comment.Content>
-              <Comment.Author as="a">{m.user.username}</Comment.Author>\
+              <Comment.Author as="a">{m.user.username}</Comment.Author>
               <Comment.Metadata>
                 <div>{m.created_at}</div>
               </Comment.Metadata>
