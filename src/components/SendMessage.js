@@ -6,10 +6,10 @@ import { Input } from "semantic-ui-react";
 import { withFormik } from "formik";
 import gql from "graphql-tag";
 import { compose, graphql } from "react-apollo";
+
 const SendMessageWrapper = styled.div`
   grid-column: 3;
-  grid-row: 3;
-  margin: 20px;
+  padding: 20px;
 `;
 
 const ENTER_KEY = 13;
@@ -19,8 +19,8 @@ const SendMessage = ({
   values,
   handleChange,
   handleBlur,
-  isSubmitting,
   handleSubmit,
+  isSubmitting,
 }) => (
   <SendMessageWrapper>
     <Input
@@ -57,6 +57,7 @@ export default compose(
         setSubmitting(false);
         return;
       }
+
       await mutate({
         variables: { channelId, text: values.message },
       });
